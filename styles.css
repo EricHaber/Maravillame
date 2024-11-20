@@ -1,52 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Comic Sans MS", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #fffbf0;
+    color: #444;
 }
 
 header {
-    background-color: #005f73;
+    background-color: #ff8c42;
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
+    border-bottom: 4px solid #ffab6f;
 }
 
 header h1 {
     margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px #ffa66e;
 }
 
 nav {
-    background-color: #0a9396;
-    padding: 0.5rem;
+    background-color: #ffd700;
+    padding: 1rem;
     text-align: center;
+    border-top: 2px solid #ffef85;
+    border-bottom: 2px solid #ffef85;
 }
 
 nav a {
-    color: #fff;
+    color: #ff4500;
     margin: 0 1rem;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #fff3d4;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    transform: scale(1.1);
+    background-color: #ffe4b5;
 }
 
 main {
     max-width: 800px;
     margin: 2rem auto;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    background: #fffbe6;
+    border-radius: 16px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    border: 3px dashed #ffcc00;
 }
 
 footer {
     text-align: center;
-    padding: 1rem;
-    background-color: #005f73;
+    padding: 1.5rem;
+    background-color: #ff8c42;
     color: #fff;
-    margin-top: 2rem;
+    border-top: 4px solid #ffab6f;
+    font-size: 1.2rem;
+}
+
+footer a {
+    color: #ffdd93;
+    text-decoration: underline;
+    font-weight: bold;
 }
