@@ -1,74 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Example</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #f0f8ff;
-        }
-        .quiz-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 20px auto;
-        }
-        .question {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        .options {
-            list-style: none;
-            padding: 0;
-        }
-        .options li {
-            margin: 10px 0;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #4caf50;
-            color: #fff;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .result {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles.css">
+    <title>Cuestionario - Maravíllame</title>
 </head>
 <body>
-    <div class="quiz-container">
-        <div class="question">What is the capital of France?</div>
-        <ul class="options">
-            <li><button onclick="checkAnswer(this, 'wrong')">Berlin</button></li>
-            <li><button onclick="checkAnswer(this, 'wrong')">Madrid</button></li>
-            <li><button onclick="checkAnswer(this, 'correct')">Paris</button></li>
-            <li><button onclick="checkAnswer(this, 'wrong')">Rome</button></li>
-        </ul>
-        <div id="result" class="result"></div>
-    </div>
-
+    <header>
+        <h1>Maravíllame</h1>
+        <p>Un viaje por las maravillas del mundo.</p>
+    </header>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../about.html">Quiénes Somos</a>
+    </nav>
+    <main>
+        <h2>Cuestionario: ¿Cuánto sabes sobre las maravillas?</h2>
+        <form id="quiz-form">
+            <div class="question-block">
+                <p><strong>1. ¿Dónde puedes ver la Aurora Boreal?</strong></p>
+                <label><input type="radio" name="q1" value="wrong"> En el Amazonas</label><br>
+                <label><input type="radio" name="q1" value="wrong"> En los Cenotes de México</label><br>
+                <label><input type="radio" name="q1" value="correct"> En el Ártico</label><br>
+                <label><input type="radio" name="q1" value="wrong"> En la Gran Muralla China</label>
+            </div>
+            <hr>
+            <div class="question-block">
+                <p><strong>2. ¿Qué maravilla está relacionada con el agua?</strong></p>
+                <label><input type="radio" name="q2" value="wrong"> Jardines Colgantes de Babilonia</label><br>
+                <label><input type="radio" name="q2" value="correct"> Gran Barrera de Coral</label><br>
+                <label><input type="radio" name="q2" value="wrong"> Faro de Alejandría</label><br>
+                <label><input type="radio" name="q2" value="wrong"> Gran Muralla China</label>
+            </div>
+            <hr>
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="button" onclick="checkAnswers()" style="background-color: #005f73; color: white; padding: 10px 20px; font-size: 1.2rem; border: none; border-radius: 5px; cursor: pointer;">
+                    Enviar Respuestas
+                </button>
+            </div>
+        </form>
+        <div id="result" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
+    </main>
+    <footer>
+        <p>© 2024 Maravíllame. Todos los derechos reservados.</p>
+    </footer>
     <script>
-        function checkAnswer(button, answer) {
+        function checkAnswers() {
+            const answers = {
+                q1: 'correct',
+                q2: 'correct'
+            };
+            let correctCount = 0;
+
+            for (const question in answers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption && selectedOption.value === answers[question]) {
+                    correctCount++;
+                }
+            }
+
             const resultDiv = document.getElementById('result');
-            if (answer === 'correct') {
-                resultDiv.textContent = "Correct! Paris is the capital of France.";
+            if (correctCount === Object.keys(answers).length) {
+                resultDiv.textContent = "¡Felicidades! Respondiste todo correctamente.";
                 resultDiv.style.color = "green";
             } else {
-                resultDiv.textContent = "Incorrect. The correct answer is Paris.";
+                resultDiv.textContent = `Respondiste ${correctCount} de ${Object.keys(answers).length} correctamente. Intenta de nuevo.`;
                 resultDiv.style.color = "red";
             }
         }
