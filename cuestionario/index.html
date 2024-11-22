@@ -18,6 +18,7 @@
     <main>
         <h2>Cuestionario: ¿Cuánto sabes sobre las maravillas?</h2>
         <form id="quiz-form">
+            <!-- Preguntas organizadas por sección -->
             <div class="question-block">
                 <p><strong>1. ¿Dónde comienza la historia de Lola?</strong></p>
                 <label><input type="radio" name="q1" value="correct"> En Sevilla</label><br>
@@ -88,7 +89,12 @@
         function checkAnswers() {
             const answers = {
                 q1: 'correct',
-                q2: 'correct'
+                q2: 'correct',
+                q3: 'correct',
+                q4: 'correct',
+                q5: 'correct',
+                q6: 'correct',
+                q7: 'correct'
             };
             let correctCount = 0;
 
