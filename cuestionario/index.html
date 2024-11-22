@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .quiz-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="question">What is the capital of France?</div>
+        <ul class="options">
+            <li><button onclick="checkAnswer(this, 'wrong')">Berlin</button></li>
+            <li><button onclick="checkAnswer(this, 'wrong')">Madrid</button></li>
+            <li><button onclick="checkAnswer(this, 'correct')">Paris</button></li>
+            <li><button onclick="checkAnswer(this, 'wrong')">Rome</button></li>
+        </ul>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function checkAnswer(button, answer) {
+            const resultDiv = document.getElementById('result');
+            if (answer === 'correct') {
+                resultDiv.textContent = "Correct! Paris is the capital of France.";
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.textContent = "Incorrect. The correct answer is Paris.";
+                resultDiv.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
