@@ -52,7 +52,7 @@ nav a:hover {
 }
 
 main {
-    max-width: 800px;
+    max-width: 80%;
     margin: 2rem auto;
     padding: 2rem;
     background: #fffbe6;
