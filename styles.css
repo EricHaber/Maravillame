@@ -22,10 +22,15 @@ header h1 {
 
 nav {
     background-color: #ffd700;
-    padding: 3rem;
+    padding: 1rem;
     text-align: center;
     border-top: 2px solid #ffef85;
     border-bottom: 2px solid #ffef85;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos pasen a una nueva línea */
+    justify-content: center; /* Centra los enlaces */
+    gap: 1rem; /* Espaciado horizontal y vertical */
+    row-gap: 2rem; /* Aumenta el espacio entre líneas */
 }
 
 nav a {
