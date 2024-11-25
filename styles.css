@@ -29,8 +29,8 @@ nav {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos pasen a una nueva línea */
     justify-content: center; /* Centra los enlaces */
-    gap: 1rem; /* Espaciado horizontal y vertical */
-    row-gap: 4rem; /* Aumenta el espacio entre líneas */
+    gap: 0.3rem; /* Espaciado horizontal y vertical */
+    row-gap: 2rem; /* Aumenta el espacio entre líneas */
 }
 
 nav a {
