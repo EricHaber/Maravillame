@@ -24,22 +24,73 @@
     </nav>
     <main>
         <h2>Explora las maravillas:</h2>
-        <ul>
-            <li><a href="aurora_boreal/index.html">Aurora Boreal</a></li>
-            <li><a href="amazonas/index.html">Amazonas</a></li>
-            <li><a href="cenotes/index.html">Cenotes de México</a></li>
-            <li><a href="faro_de_alejandria/index.html">Faro de Alejandría</a></li>
-            <li><a href="jardines_colgantes/index.html">Jardines Colgantes de Babilonia</a></li>
-            <li><a href="barrera_de_coral/index.html">Gran Barrera de Coral</a></li>
-            <li><a href="muralla_china/index.html">Gran Muralla china</a></li>
-        </ul>
-        <hr>
+        <div id="map" style="height: 500px; width: 100%; margin-top: 20px;"></div>
         <div style="text-align: center; margin-top: 20px;">
             <button onclick="location.href='cuestionario/index.html'" style="background-color: #005f73; color: white; padding: 10px 20px; font-size: 1.2rem; border: none; border-radius: 5px; cursor: pointer;">
                 Ir al Cuestionario
             </button>
         </div>
     </main>
+    <!-- Incluir la biblioteca Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Inicializar el mapa
+        const map = L.map('map').setView([20, 0], 2); // Coordenadas iniciales (global)
+    
+        // Cargar el mapa base (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    
+        // Datos de las maravillas (nombre, coordenadas, enlace)
+        const maravillas = [
+            { 
+                nombre: "Aurora Boreal", 
+                coords: [69.6496, 18.956], // Noruega
+                enlace: "aurora_boreal/index.html" 
+            },
+            { 
+                nombre: "Amazonas", 
+                coords: [-3.4653, -62.2159], // Brasil
+                enlace: "amazonas/index.html" 
+            },
+            { 
+                nombre: "Cenotes de México", 
+                coords: [20.211, -87.465], // Yucatán
+                enlace: "cenotes/index.html" 
+            },
+            { 
+                nombre: "Faro de Alejandría", 
+                coords: [31.2001, 29.9187], // Egipto
+                enlace: "faro_de_alejandria/index.html" 
+            },
+            { 
+                nombre: "Jardines Colgantes de Babilonia", 
+                coords: [32.5364, 44.4206], // Irak
+                enlace: "jardines_colgantes/index.html" 
+            },
+            { 
+                nombre: "Gran Barrera de Coral", 
+                coords: [-18.2871, 147.6992], // Australia
+                enlace: "barrera_de_coral/index.html" 
+            },
+            { 
+                nombre: "Gran Muralla China", 
+                coords: [40.4319, 116.5704], // China
+                enlace: "muralla_china/index.html" 
+            }
+        ];
+    
+        // Añadir marcadores al mapa
+        maravillas.forEach(maravilla => {
+            L.marker(maravilla.coords)
+                .addTo(map)
+                .bindPopup(`<strong>${maravilla.nombre}</strong><br><a href="${maravilla.enlace}">Explorar</a>`);
+        });
+    </script>
+
     <footer>
         <p>© 2024 Maravíllame. Todos los derechos reservados.</p>
     </footer>
