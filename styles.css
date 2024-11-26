@@ -27,10 +27,66 @@ nav {
     border-top: 2px solid #ffef85;
     border-bottom: 2px solid #ffef85;
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos pasen a una nueva línea */
-    justify-content: center; /* Centra los enlaces */
-    gap: 0.3rem; /* Espaciado horizontal y vertical */
-    row-gap: 2rem; /* Aumenta el espacio entre líneas */
+    flex-wrap: wrap; /* Allow elements to wrap */
+    justify-content: center;
+    gap: 0.3rem;
+    row-gap: 2rem;
+    position: relative; /* Ensure checkbox and label align correctly */
+}
+
+/* Hidden checkbox for toggling menu */
+#nav-toggle {
+    display: none; /* Hide the checkbox itself */
+}
+
+/* Label as the toggle button */
+nav label {
+    display: none; /* Initially hidden */
+    background-color: #ff8c42;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+nav label:hover {
+    background-color: #ffa66e;
+}
+
+/* Navigation links container */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem;
+    max-height: none; /* Default to showing all links */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* Collapsed menu when the checkbox is unchecked */
+#nav-toggle:not(:checked) ~ ul {
+    max-height: 100px; /* Adjust height to fit 2-3 lines */
+}
+
+/* Show the label when menu exceeds 2-3 lines */
+nav ul:has(+ label) {
+    display: flex; /* Ensure layout stays flexible */
+}
+
+nav ul:has(+ label) + label {
+    display: inline-block;
+}
+
+/* Expanded menu when the checkbox is checked */
+#nav-toggle:checked ~ ul {
+    max-height: 1000px; /* Large enough to show all links */
 }
 
 nav a {
