@@ -28,7 +28,7 @@ header h1 {
     border-bottom: 2px solid #ffef85;
     position: relative; /* For positioning the arrow button */
     overflow: hidden; /* Ensure hidden content does not overflow */
-    transition: height 0.3s ease; /* Smooth transition for expanding/collapsing */
+    transition: height 0.3s ease; /* Smooth transition for resizing */
 }
 
 /* Hidden checkbox for toggling menu */
@@ -38,11 +38,10 @@ header h1 {
 
 /* Arrow button styling */
 .collapsible-nav label {
-    display: inline-block; /* Always visible */
+    display: inline-block;
     position: absolute;
-    right: 10px; /* Align to the right edge */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%);
+    left: 50%; /* Center below the nav bar */
+    transform: translate(-50%, 0);
     background-color: #ff8c42;
     color: white;
     padding: 0.3rem 0.6rem;
@@ -50,11 +49,8 @@ header h1 {
     border-radius: 50%;
     cursor: pointer;
     user-select: none;
+    margin-top: 0.5rem;
     transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.collapsible-nav label:hover {
-    background-color: #ffa66e;
 }
 
 /* Default arrow direction (collapsed) */
@@ -72,10 +68,13 @@ header h1 {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Use flex for layout */
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: center; /* Center buttons */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem; /* Space between buttons */
+    row-gap: 0.5rem; /* Space between rows */
+    height: auto; /* Default height */
+    transition: height 0.3s ease; /* Smooth transition for height */
 }
 
 /* Button styling */
@@ -96,18 +95,23 @@ header h1 {
     transform: scale(1.1);
 }
 
-/* Initially, hide buttons by collapsing the height of the navigation */
+/* Collapsed navigation bar */
 #nav-toggle:not(:checked) + .collapsible-nav ul {
-    visibility: hidden; /* Make items invisible */
-    opacity: 0; /* Add opacity for a smoother transition */
-    transition: visibility 0.3s ease, opacity 0.3s ease;
+    height: 0; /* Collapse height to zero */
+    overflow: hidden; /* Hide overflowing buttons */
+    visibility: hidden; /* Hide content */
+    opacity: 0; /* Fade out */
+    padding: 0; /* Remove padding when collapsed */
+    transition: height 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
 }
 
-/* Show buttons when expanded */
+/* Expanded navigation bar */
 #nav-toggle:checked + .collapsible-nav ul {
     visibility: visible;
     opacity: 1;
+    padding: 1rem; /* Restore padding when expanded */
 }
+
 
 
 main {
