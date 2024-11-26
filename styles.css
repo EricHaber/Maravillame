@@ -21,37 +21,18 @@ header h1 {
 }
 
 /* General navigation styling */
-.collapsible-nav {
+nav {
     background-color: #ffd700;
     padding: 1rem;
     text-align: center;
     border-top: 2px solid #ffef85;
     border-bottom: 2px solid #ffef85;
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
+    flex-wrap: wrap; /* Allow elements to wrap */
     justify-content: center;
     gap: 0.3rem;
     row-gap: 2rem;
-    position: relative; /* Needed for toggle button positioning */
-}
-
-/* Links Styling */
-.collapsible-nav a {
-    color: #ff4500;
-    margin: 0 1rem;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-    background-color: #fff3d4;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.collapsible-nav a:hover {
-    text-decoration: none;
-    transform: scale(1.1);
-    background-color: #ffe4b5;
+    position: relative; /* Ensure checkbox and label align correctly */
 }
 
 /* Hidden checkbox for toggling menu */
@@ -59,9 +40,9 @@ header h1 {
     display: none; /* Hide the checkbox itself */
 }
 
-/* Label acting as a button */
-.collapsible-nav label {
-    display: none; /* Hidden by default */
+/* Label as the toggle button */
+nav label {
+    display: none; /* Initially hidden */
     background-color: #ff8c42;
     color: white;
     padding: 0.5rem 1rem;
@@ -70,15 +51,14 @@ header h1 {
     border-radius: 8px;
     cursor: pointer;
     margin-bottom: 1rem;
-    text-align: center;
 }
 
-.collapsible-nav label:hover {
+nav label:hover {
     background-color: #ffa66e;
 }
 
-/* Link container defaults to full visibility */
-.collapsible-nav ul {
+/* Navigation links container */
+nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -86,29 +66,28 @@ header h1 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.3rem;
+    max-height: none; /* Default to showing all links */
     overflow: hidden;
-    max-height: none; /* Show all links by default */
     transition: max-height 0.3s ease;
 }
 
-/* Hide the menu if unchecked */
-#nav-toggle:not(:checked) ~ .collapsible-nav ul {
-    max-height: 120px; /* Fits 2-3 lines of links */
+/* Collapsed menu when the checkbox is unchecked */
+#nav-toggle:not(:checked) ~ ul {
+    max-height: 100px; /* Adjust height to fit 2-3 lines */
 }
 
-/* Show the button if the menu is collapsed */
-#nav-toggle:not(:checked) ~ .collapsible-nav label {
+/* Show the label when menu exceeds 2-3 lines */
+nav ul:has(+ label) {
+    display: flex; /* Ensure layout stays flexible */
+}
+
+nav ul:has(+ label) + label {
     display: inline-block;
 }
 
-/* Expand menu when checked */
-#nav-toggle:checked ~ .collapsible-nav ul {
-    max-height: 1000px; /* Expand to show all links */
-}
-
-/* Hide the button when the menu is expanded */
-#nav-toggle:checked ~ .collapsible-nav label {
-    display: none;
+/* Expanded menu when the checkbox is checked */
+#nav-toggle:checked ~ ul {
+    max-height: 1000px; /* Large enough to show all links */
 }
 
 nav a {
