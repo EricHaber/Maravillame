@@ -23,11 +23,12 @@ header h1 {
 /* General navigation styling */
 .collapsible-nav {
     background-color: #ffd700;
-    padding: 1rem;
     text-align: center;
     border-top: 2px solid #ffef85;
     border-bottom: 2px solid #ffef85;
-    position: relative; /* For the arrow button positioning */
+    position: relative; /* For positioning the arrow button */
+    overflow: hidden; /* Ensure hidden content does not overflow */
+    transition: height 0.3s ease; /* Smooth transition for expanding/collapsing */
 }
 
 /* Hidden checkbox for toggling menu */
@@ -66,21 +67,46 @@ header h1 {
     content: "▲";
 }
 
-/* Link container defaults to hidden */
+/* Button container */
 .collapsible-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: none; /* Initially hidden */
+    display: flex; /* Use flex for layout */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: center; /* Center buttons */
+    gap: 0.5rem; /* Space between buttons */
 }
 
-/* Show links when menu is expanded */
+/* Button styling */
+.collapsible-nav ul button {
+    background-color: #fff3d4;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    color: #ff4500;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.collapsible-nav ul button:hover {
+    background-color: #ffe4b5;
+    transform: scale(1.1);
+}
+
+/* Initially, hide buttons by collapsing the height of the navigation */
+#nav-toggle:not(:checked) + .collapsible-nav ul {
+    visibility: hidden; /* Make items invisible */
+    opacity: 0; /* Add opacity for a smoother transition */
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+
+/* Show buttons when expanded */
 #nav-toggle:checked + .collapsible-nav ul {
-    display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: center; /* Center links */
-    gap: 0.3rem;
-    row-gap: 2rem; /* Space between lines */
+    visibility: visible;
+    opacity: 1;
 }
 
 
