@@ -107,22 +107,32 @@
                 q7: 'correct'
             };
             let correctCount = 0;
+            const resultDiv = document.getElementById('result');
 
+            document.querySelectorAll('.question-block').forEach(block => {
+                block.style.backgroundColor = ""; // Reset background
+            });
+            
             for (const question in answers) {
                 const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
-                if (selectedOption && selectedOption.value === answers[question]) {
-                    correctCount++;
+                const questionBlock = document.querySelector(`input[name="${question}"]`).closest('.question-block');
+    
+                if (selectedOption) {
+                    if (selectedOption.value === answers[question]) {
+                        correctCount++;
+                        questionBlock.style.backgroundColor = "#d4edda"; // Light green for correct
+                    } else {
+                        questionBlock.style.backgroundColor = "#f8d7da"; // Light red for incorrect
+                    }
+                } else {
+                    questionBlock.style.backgroundColor = "#fff3cd"; // Light yellow for unanswered
                 }
             }
+    
+            // Show feedback
+            resultDiv.textContent = `Respondiste ${correctCount} de ${Object.keys(answers).length} correctamente.`;
+            resultDiv.style.color = correctCount === Object.keys(answers).length ? "green" : "red";
 
-            const resultDiv = document.getElementById('result');
-            if (correctCount === Object.keys(answers).length) {
-                resultDiv.textContent = "¡Felicidades! Respondiste todo correctamente.";
-                resultDiv.style.color = "green";
-            } else {
-                resultDiv.textContent = `Respondiste ${correctCount} de ${Object.keys(answers).length} correctamente. Intenta de nuevo.`;
-                resultDiv.style.color = "red";
-            }
         }
     </script>
 </body>
