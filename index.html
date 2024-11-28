@@ -82,10 +82,22 @@
         ];
     
         // Añadir marcadores al mapa
+        // Añadir marcadores y replicarlos en longitudes adicionales para repetición
         maravillas.forEach(maravilla => {
+            // Añadir marcador principal
             L.marker(maravilla.coords)
                 .addTo(map)
                 .bindPopup(`<strong>${maravilla.nombre}</strong><br><a href="${maravilla.enlace}">Explorar</a>`);
+    
+            // Añadir marcadores replicados a ±360° para que se repitan en el mapa continuo
+            for (let wrap = -2; wrap <= 2; wrap++) {
+                if (wrap !== 0) { // No añadir al mapa principal dos veces
+                    const wrappedCoords = [maravilla.coords[0], maravilla.coords[1] + 360 * wrap];
+                    L.marker(wrappedCoords)
+                        .addTo(map)
+                        .bindPopup(`<strong>${maravilla.nombre}</strong><br><a href="${maravilla.enlace}">Explorar</a>`);
+                }
+            }
         });
     </script>
 
